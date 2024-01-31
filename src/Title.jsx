@@ -25,8 +25,6 @@ const Title = ({ handleSave }) => {
             <div>
             <ul>!  - ordered</ul><hr></hr>
             <ul>@ - unordered</ul><hr></hr>
-            <ul>#  - H1</ul><hr></hr>
-            <ul>$  - H2</ul><hr></hr>
             <ul>&  - Italic</ul><hr></hr>
             <ul>*  - Bold</ul><hr></hr>
             <ul>_  - Underline</ul><hr></hr>

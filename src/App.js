@@ -14,7 +14,6 @@ import "./App.css";
 import Title from "./Title";
 
 
-
 const customStyleMap = {
   HIGHLIGHT: {
     backgroundColor: "yellow",
@@ -25,7 +24,6 @@ const customStyleMap = {
 };
 
 const App = () => {
-  
   const [editorState, setEditorState] = useState(() => {
 
     // Load content from local storage on component mount
@@ -39,8 +37,6 @@ const App = () => {
     }
   });
   
- 
-
 
   useEffect(() => {
     // Save content to local storage whenever editor state changes
@@ -65,11 +61,8 @@ const App = () => {
   };
 
   const handleBeforeInput = (chars) => {
-    if (chars === "#") {
-      setEditorState(RichUtils.toggleBlockType(editorState, "header-one"));
-      return "handled";
-    } else if (chars === "$") {
-      setEditorState(RichUtils.toggleBlockType(editorState, "header-two"));
+    if  (chars === "!") {
+      setEditorState(RichUtils.toggleBlockType(editorState, "ordered-list-item"));
       return "handled";
     } else if (chars === "&") {
       setEditorState(RichUtils.toggleInlineStyle(editorState, "ITALIC"));
@@ -82,9 +75,6 @@ const App = () => {
       return "handled";
     } else if (chars === "*") {
       setEditorState(RichUtils.toggleInlineStyle(editorState, "BOLD"));
-      return "handled";
-    } else if (chars === "!") {
-      setEditorState(RichUtils.toggleBlockType(editorState, "ordered-list-item"));
       return "handled";
     } else if (chars === "@") {
       setEditorState(RichUtils.toggleBlockType(editorState, "unordered-list-item"));
@@ -99,12 +89,10 @@ const App = () => {
     localStorage.setItem("editorContent", serializedContent);
     toast("Content saved successfully!");
   };
- 
-
 
   return (
     <div className="App ">
-    <ToastContainer position="top-center"
+    <ToastContainer position="bottom-left"
     autoClose={5000}
     hideProgressBar={false}
     newestOnTop={false}
@@ -113,12 +101,10 @@ const App = () => {
     pauseOnFocusLoss
     draggable
     pauseOnHover
-    theme="light"
-     />
-     
+    theme="light" />
       <header className="App-header bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% ">
         <Title handleSave={handleSave}/>
-        <div className="edit w-[75%] my-2 bg-sky-900 text-white font-mono">
+        <div className="edit w-[75%] my-2 bg-sky-900 text-white">
         
         <Editor
             editorState={editorState}
